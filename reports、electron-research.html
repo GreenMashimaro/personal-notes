@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Electron 调研报告示例</title>
+  <style>
+    body { margin: 0; background: #f4f7fb; color: #172b46; font: 17px/1.7 system-ui, sans-serif; }
+    main { max-width: 44rem; margin: 4rem auto; padding: 0 1.5rem; }
+    section { margin-top: 2rem; padding: 1.25rem 1.5rem; background: #fff; border: 1px solid #dce5f1; border-radius: 12px; }
+    a { color: #1b56a3; }
+    button { padding: .55rem .9rem; border: 0; border-radius: 6px; background: #245db0; color: white; font: inherit; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="../">返回目录</a>
+    <h1>Electron 调研报告示例</h1>
+    <p>Electron 的渲染进程负责页面交互，主进程负责窗口和桌面能力。预加载脚本可以为页面提供受控接口。</p>
+    <section>
+      <h2>交互示例</h2>
+      <button id="toggle" type="button" aria-controls="details" aria-expanded="false">展开 IPC 调用流程</button>
+      <p id="details" hidden>页面调用预加载脚本提供的接口，接口通过 IPC 向主进程发起请求，主进程处理后返回结果。</p>
+    </section>
+  </main>
+  <script>
+    const toggle = document.getElementById("toggle");
+    const details = document.getElementById("details");
+    toggle.addEventListener("click", () => {
+      details.hidden = !details.hidden;
+      toggle.setAttribute("aria-expanded", String(!details.hidden));
+      toggle.textContent = details.hidden ? "展开 IPC 调用流程" : "收起 IPC 调用流程";
+    });
+  </script>
+</body>
+</html>
